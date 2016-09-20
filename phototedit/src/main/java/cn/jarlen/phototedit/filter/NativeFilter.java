@@ -9,5 +9,12 @@ public class NativeFilter {
         System.loadLibrary("NativeFilter");
     }
 
+    public native int[] ToGray(int[] pixels, int width, int height, float factor);
+
+
+    public native int[] ToMosatic(int[] pixels, int width, int height,int factor);
+
+    public native int[] ToBrown(int[] pixels, int width, int height,float factor);
+
     public native String test();
 }

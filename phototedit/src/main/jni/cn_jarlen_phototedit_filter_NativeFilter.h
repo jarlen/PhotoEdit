@@ -9,6 +9,30 @@ extern "C" {
 #endif
 /*
  * Class:     cn_jarlen_phototedit_filter_NativeFilter
+ * Method:    ToGray
+ * Signature: ([IIIF)[I
+ */
+JNIEXPORT jintArray JNICALL Java_cn_jarlen_phototedit_filter_NativeFilter_ToGray
+  (JNIEnv *, jobject, jintArray, jint, jint, jfloat);
+
+/*
+ * Class:     cn_jarlen_phototedit_filter_NativeFilter
+ * Method:    ToMosatic
+ * Signature: ([IIII)[I
+ */
+JNIEXPORT jintArray JNICALL Java_cn_jarlen_phototedit_filter_NativeFilter_ToMosatic
+  (JNIEnv *, jobject, jintArray, jint, jint, jint);
+
+/*
+ * Class:     cn_jarlen_phototedit_filter_NativeFilter
+ * Method:    ToBrown
+ * Signature: ([IIIF)[I
+ */
+JNIEXPORT jintArray JNICALL Java_cn_jarlen_phototedit_filter_NativeFilter_ToBrown
+  (JNIEnv *, jobject, jintArray, jint, jint, jfloat);
+
+/*
+ * Class:     cn_jarlen_phototedit_filter_NativeFilter
  * Method:    test
  * Signature: ()Ljava/lang/String;
  */
