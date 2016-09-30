@@ -1,10 +1,9 @@
 //
-// Created by hjl on 2016/9/20.
+// Created by hjl on 2016/9/30.
 //
 
 #ifndef PHOTOEDIT_COLOR_H
 #define PHOTOEDIT_COLOR_H
-
 int alpha(int color) {
     return (color & 0xFF000000) >> 24;
 }
@@ -36,5 +35,4 @@ float Max(float x, float y) {
 float Min(float x, float y) {
     return x > y ? y : x;
 }
-
 #endif //PHOTOEDIT_COLOR_H

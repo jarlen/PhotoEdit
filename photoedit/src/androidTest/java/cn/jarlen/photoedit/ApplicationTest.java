@@ -1,4 +1,4 @@
-package cn.jarlen.phototedit;
+package cn.jarlen.photoedit;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

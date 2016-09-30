@@ -1,16 +1,11 @@
-//
-// Created by hjl on 2016/9/20.
-//
 
-
-#include <load.h>
-#include <jni.h>
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <color.h>
-#include "load.h"
+#include <NativeFilter.h>
 
-#define JNIREG_CLASS "cn/jarlen/phototedit/filter/NativeFilter"
+//指定要注册的类
+#define JNIREG_CLASS "cn/jarlen/photoedit/filters/NativeFilter"
 
 int registerNativeMethods(JNIEnv *env, const char *className,
                           JNINativeMethod *gMethods, int numMethods) {
@@ -53,4 +48,6 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
 }
 
 
-
+jstring test(JNIEnv * env, jobject obj){
+    return (*env).NewStringUTF("This is native filter !!!");
+}

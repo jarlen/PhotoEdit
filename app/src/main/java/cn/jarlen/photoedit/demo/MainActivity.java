@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import cn.jarlen.phototedit.filter.NativeFilter;
+import cn.jarlen.photoedit.filters.NativeFilter;
 
 public class MainActivity extends AppCompatActivity {
 
