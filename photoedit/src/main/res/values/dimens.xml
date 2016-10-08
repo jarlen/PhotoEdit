@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 身体变形 -->
+    <dimen name="max_dist">40dip</dimen>
+    <dimen name="warp_line">15dip</dimen>
+</resources>

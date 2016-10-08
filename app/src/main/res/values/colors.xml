@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="top_bar_bg">#66000000</color>
+    <color name="common_bg">#ff282828</color>
+    <color name="bottom_menu_bg">#ff1d1d1d</color>
+
+    <color name="ios7_white">#ffa8a8a8</color>
+    <color name="ios7_gray">#ff646464</color>
+    <color name="ios7_blue">#ff1086ff</color>
+    <color name="bluegrey">#ffd8d8d8</color>
 </resources>

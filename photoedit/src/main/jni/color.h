@@ -1,5 +1,5 @@
 //
-// Created by hjl on 2016/9/30.
+// Created by jarlen on 2016/9/30.
 //
 
 #ifndef PHOTOEDIT_COLOR_H
@@ -35,4 +35,19 @@ float Max(float x, float y) {
 float Min(float x, float y) {
     return x > y ? y : x;
 }
+
+void matrix1X4(int a[4], float b[][4], int c[4])
+{
+    for(int i = 0; i < 4; i++)
+    {
+        float k = 0.0;
+        for(int j = 0; j < 4; j++)
+        {
+            k += a[j] * b[j][i];
+        }
+
+        c[i] = k > 255 ? 255 : (int)k;
+    }
+}
+
 #endif //PHOTOEDIT_COLOR_H

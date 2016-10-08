@@ -2,11 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.jarlen.photoedit.demo">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <!-- 往sdcard中写入数据的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -15,6 +26,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FilterTestActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ImageFilterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WarpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PhotoFrameActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DrawBaseActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MosaicActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ImageCropActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddWatermarkActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EnhanceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RevolveActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddTextActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
