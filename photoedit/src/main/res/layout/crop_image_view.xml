@@ -10,7 +10,7 @@
         tools:ignore="contentDescription"
         android:adjustViewBounds="true" />
 
-    <com.js.photosdk.crop.CropOverlayView
+    <cn.jarlen.photoedit.crop.CropOverlayView
         android:id="@+id/CropOverlayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

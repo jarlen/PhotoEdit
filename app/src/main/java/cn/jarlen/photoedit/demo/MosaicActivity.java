@@ -38,7 +38,6 @@ public class MosaicActivity extends Activity implements Toolbar.OnMenuItemClickL
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.inflateMenu(R.menu.menu_mosaic);
         mToolbar.setOnMenuItemClickListener(this);
-        mToolbar.setTitle("马赛克");
         initView();
 
         Intent intent = getIntent();

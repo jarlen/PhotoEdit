@@ -1,13 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_enhance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cn.jarlen.photoedit.demo.EnhanceActivity">
+    android:background="@color/common_bg">
 
+    <include
+        android:id="@+id/common_top_bar"
+        layout="@layout/layout_common_top_bar" />
+
+    <RelativeLayout
+        android:id="@+id/pictureRl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tone_sub_menu"
+        android:layout_below="@+id/common_top_bar">
+
+        <ImageView
+            android:id="@+id/enhancePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+
+    <TableLayout
+        android:id="@+id/tone_sub_menu"
+        style="@style/sub_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:paddingBottom="10.0dip"
+        android:paddingLeft="3.0dip"
+        android:paddingRight="10.0dip"
+        android:paddingTop="10.0dip"
+        android:stretchColumns="1">
+
+
+        <TableRow android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="饱和度"
+                android:textColor="@color/bluegrey"
+                android:textSize="13.0dip" />
+
+            <SeekBar
+                android:id="@+id/saturation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:max="200"
+                android:progress="100" />
+        </TableRow>
+
+
+        <TableRow android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="亮度"
+                android:textColor="@color/bluegrey"
+                android:textSize="13.0dip" />
+
+            <SeekBar
+                android:id="@+id/brightness"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:max="200"
+                android:progress="100" />
+        </TableRow>
+
+        <TableRow android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="对比度"
+                android:textColor="@color/bluegrey"
+                android:textSize="13.0dip" />
+
+            <SeekBar
+                android:id="@+id/contrast"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:max="200"
+                android:progress="100" />
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>

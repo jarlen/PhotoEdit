@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_paint_one"
+        android:title="画笔1"
+        />
+    <item android:id="@+id/action_paint_two"
+        android:title="画笔2"/>
+
+    <item android:id="@+id/action_size"
+        android:title="画笔大小"
+        />
+
+    <item android:id="@+id/action_color"
+        android:title="画笔颜色"
+        />
+
+    <item android:id="@+id/action_pic"
+        android:title="贴图"
+        />
+    <item android:id="@+id/action_eraser"
+        android:title="橡皮擦"
+        />
+
+</menu>
