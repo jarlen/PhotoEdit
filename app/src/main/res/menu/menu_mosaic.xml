@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_flower"
+        android:title="花色"
+        />
+
+    <item android:id="@+id/action_base"
+        android:title="基本"
+        />
+
+    <item android:id="@+id/action_ground_glass"
+        android:title="毛玻璃"
+        />
+
+    <item android:id="@+id/action_size"
+        android:title="大小"
+        />
+
+
+    <item android:id="@+id/action_eraser"
+        android:title="橡皮擦"
+        />
+
+</menu>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_filter"
+        android:title="滤镜"
+        />
+    <item android:id="@+id/action_wrap"
+        android:title="人体变形"
+        />
+    <item android:id="@+id/action_frame"
+        android:title="边框"
+        />
+    <item android:id="@+id/action_draw"
+        android:title="涂鸦"
+        />
+    <item android:id="@+id/action_mosaic"
+        android:title="马赛克"
+        />
+    <item android:id="@+id/action_crop"
+        android:title="剪切"
+        />
+    <item android:id="@+id/action_addwm"
+        android:title="添加水印"
+        />
+    <item android:id="@+id/action_enchance"
+        android:title="图像增强"
+        />
+    <item android:id="@+id/action_rotate"
+        android:title="旋转"
+        />
+    <item android:id="@+id/action_addtv"
+        android:title="添加文字"
+        />
+
+</menu>

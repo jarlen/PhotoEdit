@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -31,7 +32,7 @@ import cn.jarlen.photoedit.demo.utils.Constants;
 import cn.jarlen.photoedit.operate.OperateUtils;
 import cn.jarlen.photoedit.utils.FileUtils;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
 
     private LinearLayout content_layout;
     private Button addPictureFromPhotoBtn;
@@ -89,10 +90,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
     OperateUtils operateUtils;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_launcher);
+        toolbar.setTitle("PicDemo");
+        toolbar.inflateMenu(R.menu.base_toolbar_menu);
+        toolbar.setOnMenuItemClickListener(this);
+
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         width = metric.widthPixels; // 屏幕宽度（像素）
@@ -108,25 +116,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
-            case R.id.addPictureFromCamera :
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.addPictureFromCamera:
                 getPictureFormCamera();
                 break;
-            case R.id.addPictureFromPhoto :
+            case R.id.addPictureFromPhoto:
                 getPictureFromPhoto();
                 break;
-            case R.id.testBtn :
-                if (photoPath == null)
-                {
+            case R.id.testBtn:
+                if (photoPath == null) {
                     Toast.makeText(MainActivity.this, "请选择图片",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (intentClass == null)
-                {
+                if (intentClass == null) {
                     Toast.makeText(MainActivity.this, "请图片操作类型",
                             Toast.LENGTH_SHORT).show();
                     return;
@@ -138,23 +142,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 MainActivity.this.startActivityForResult(photoFrameIntent,
                         intentType);
                 break;
-            default :
+            default:
                 break;
         }
 
     }
 
     /* 从相册中获取照片 */
-    private void getPictureFromPhoto()
-    {
+    private void getPictureFromPhoto() {
         Intent openphotoIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(openphotoIntent, PHOTO_PICKED_WITH_DATA);
     }
 
     /* 从相机中获取照片 */
-    private void getPictureFormCamera()
-    {
+    private void getPictureFormCamera() {
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 
         tempPhotoPath = FileUtils.DCIMCamera_PATH + FileUtils.getNewFileName()
@@ -162,13 +164,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         mCurrentPhotoFile = new File(tempPhotoPath);
 
-        if (!mCurrentPhotoFile.exists())
-        {
-            try
-            {
+        if (!mCurrentPhotoFile.exists()) {
+            try {
                 mCurrentPhotoFile.createNewFile();
-            } catch (IOException e)
-            {
+            } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
@@ -178,22 +177,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Uri.fromFile(mCurrentPhotoFile));
         startActivityForResult(intent, CAMERA_WITH_DATA);
     }
-    private void compressed()
-    {
+
+    private void compressed() {
         Bitmap resizeBmp = operateUtils.compressionFiller(photoPath,
                 content_layout);
         pictureShow.setImageBitmap(resizeBmp);
         camera_path = SaveBitmap(resizeBmp, "saveTemp");
     }
-    final Handler myHandler = new Handler()
-    {
+
+    final Handler myHandler = new Handler() {
         @Override
-        public void handleMessage(Message msg)
-        {
-            if (msg.what == 1)
-            {
-                if (content_layout.getWidth() != 0)
-                {
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                if (content_layout.getWidth() != 0) {
                     Log.i("LinearLayoutW", content_layout.getWidth() + "");
                     Log.i("LinearLayoutH", content_layout.getHeight() + "");
                     // 取消定时器
@@ -204,68 +200,58 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     };
     Timer timer = new Timer();
-    TimerTask task = new TimerTask()
-    {
-        public void run()
-        {
+    TimerTask task = new TimerTask() {
+        public void run() {
             Message message = new Message();
             message.what = 1;
             myHandler.sendMessage(message);
         }
     };
+
     // 将生成的图片保存到内存中
-    public String SaveBitmap(Bitmap bitmap, String name)
-    {
+    public String SaveBitmap(Bitmap bitmap, String name) {
         if (Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED))
-        {
+                Environment.MEDIA_MOUNTED)) {
             File dir = new File(Constants.filePath);
             if (!dir.exists())
                 dir.mkdir();
             File file = new File(Constants.filePath + name + ".jpg");
             FileOutputStream out;
-            try
-            {
+            try {
                 out = new FileOutputStream(file);
-                if (bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out))
-                {
+                if (bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)) {
                     out.flush();
                     out.close();
                 }
                 return file.getAbsolutePath();
-            } catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
         return null;
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
 
-        if (resultCode != RESULT_OK)
-        {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode != RESULT_OK) {
             return;
         }
 
-        switch (requestCode)
-        {
-            case CAMERA_WITH_DATA :
+        switch (requestCode) {
+            case CAMERA_WITH_DATA:
 
                 photoPath = tempPhotoPath;
-                if (content_layout.getWidth() == 0)
-                {
+                if (content_layout.getWidth() == 0) {
                     timer.schedule(task, 10, 1000);
-                } else
-                {
+                } else {
                     compressed();
                 }
 
                 break;
 
-            case PHOTO_PICKED_WITH_DATA :
+            case PHOTO_PICKED_WITH_DATA:
 
                 Uri selectedImage = data.getData();
                 String[] filePathColumns = {MediaStore.Images.Media.DATA};
@@ -276,16 +262,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 c.close();
 
                 // 延迟每次延迟10 毫秒 隔1秒执行一次
-                if (content_layout.getWidth() == 0)
-                {
+                if (content_layout.getWidth() == 0) {
                     timer.schedule(task, 10, 1000);
-                } else
-                {
+                } else {
                     compressed();
                 }
 
                 break;
-            case PHOTO_FRAME_WITH_DATA :
+            case PHOTO_FRAME_WITH_DATA:
             case PHOTO_MOSAIC_WITH_DATA:
             case PHOTO_DRAW_WITH_DATA:
             case PHOTO_CROP_WITH_DATA:
@@ -302,86 +286,71 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 pictureShow.setImageBitmap(resultBitmap);
                 break;
 
-            default :
+            default:
                 break;
         }
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        menu.add(0, 1, 1, "滤镜");
-        menu.add(0, 2, 2, "人体变形");
-        menu.add(0, 3, 3, "边框");
-        menu.add(0, 4, 4, "涂鸦");
-        menu.add(0, 5, 5, "马赛克");
-        menu.add(0, 6, 6, "剪切");
-        menu.add(0, 7, 7, "添加水印");
-        menu.add(0, 8, 9, "图像增强");
-        menu.add(0, 9, 10, "旋转");
-        menu.add(0, 10, 8, "添加文字");
-//        menu.add(0, 11, 11, "测试");
-        return super.onCreateOptionsMenu(menu);
-    }
+    public boolean onMenuItemClick(MenuItem item) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if (photoPath == null)
-        {
+        if (photoPath == null) {
             Toast.makeText(MainActivity.this, "请选择图片", Toast.LENGTH_SHORT)
                     .show();
             return true;
         }
-        switch (item.getItemId())
-        {
-            case 1 :
+
+        switch (item.getItemId()) {
+            case R.id.action_filter:
                 intentClass = ImageFilterActivity.class;
                 intentType = PHOTO_FILTER_WITH_DATA;
+
                 break;
-            case 2 :
+            case R.id.action_wrap:
                 intentClass = WarpActivity.class;
                 intentType = PHOTO_WARP_WITH_DATA;
                 break;
-            case 3 :
-                intentClass = PhotoFrameActivity.class;
-                intentType = PHOTO_FRAME_WITH_DATA;
-                break;
-            case 4 :
-                intentClass = DrawBaseActivity.class;
-                intentType = PHOTO_DRAW_WITH_DATA;
-                break;
-            case 5 :
-                intentClass = MosaicActivity.class;
-                intentType = PHOTO_MOSAIC_WITH_DATA;
-                break;
-            case 6 :
+            case R.id.action_crop:
                 intentClass = ImageCropActivity.class;
                 intentType = PHOTO_CROP_WITH_DATA;
                 break;
-            case 7 :
-                intentClass = AddWatermarkActivity.class;
-                intentType = PHOTO_ADD_WATERMARK_DATA;
+            case R.id.action_draw:
+                intentClass = DrawBaseActivity.class;
+                intentType = PHOTO_DRAW_WITH_DATA;
                 break;
-            case 8 :
-                intentClass = EnhanceActivity.class;
-                intentType = PHOTO_ENHANCE_WITH_DATA;
+            case R.id.action_frame:
+                intentClass = PhotoFrameActivity.class;
+                intentType = PHOTO_FRAME_WITH_DATA;
                 break;
-            case 9 :
-                intentClass = RevolveActivity.class;
-                intentType = PHOTO_REVOLVE_WITH_DATA;
-                break;
-            case 10:
+            case R.id.action_addtv:
                 intentClass = AddTextActivity.class;
                 intentType = PHOTO_ADD_TEXT_DATA;
                 break;
-            default :
-//                intentClass = FrameFilterActivity.class;
-//                intentType = PHOTO_TEST_TEXT_DATA;
+            case R.id.action_addwm:
+                intentClass = AddWatermarkActivity.class;
+                intentType = PHOTO_ADD_WATERMARK_DATA;
+                break;
+            case R.id.action_mosaic:
+                intentClass = MosaicActivity.class;
+                intentType = PHOTO_MOSAIC_WITH_DATA;
+                break;
+            case R.id.action_enchance:
+                intentClass = EnhanceActivity.class;
+                intentType = PHOTO_ENHANCE_WITH_DATA;
+                break;
+            case R.id.action_rotate:
+                intentClass = RevolveActivity.class;
+                intentType = PHOTO_REVOLVE_WITH_DATA;
+                break;
+            default:
+                intentClass = null;
+                intentType = 0;
                 break;
         }
+
         Toast.makeText(MainActivity.this, "请点击测试按钮", Toast.LENGTH_SHORT).show();
-        return super.onOptionsItemSelected(item);
+
+        return false;
     }
 }

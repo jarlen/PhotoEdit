@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/common_top_bar" >
 
-        <com.js.photosdk.bodywarp.WarpView
+        <cn.jarlen.photoedit.warp.WarpView
             android:id="@+id/warp_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

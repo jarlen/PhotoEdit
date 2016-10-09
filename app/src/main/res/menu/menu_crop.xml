@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_freedom"
+        android:title="自由剪切"
+        />
+    <item android:id="@+id/action_1_1"
+        android:title="1:1剪切"
+        />
+    <item android:id="@+id/action_3_2"
+        android:title="3:2剪切"
+        />
+    <item android:id="@+id/action_4_3"
+        android:title="4:3剪切"
+        />
+    <item android:id="@+id/action_16_9"
+        android:title="16:9剪切"
+        />
+    <item android:id="@+id/action_rotate"
+        android:title="旋转"
+        />
+    <item android:id="@+id/action_up_down"
+        android:title="上下翻转"
+        />执行剪切
+    <item android:id="@+id/action_left_right"
+        android:title="左右翻转"
+        />
+
+    <item android:id="@+id/action_crop"
+        android:title="执行剪切"
+        />
+
+</menu>

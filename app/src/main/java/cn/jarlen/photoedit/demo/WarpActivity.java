@@ -39,6 +39,8 @@ public class WarpActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_warp);
+        initView();
+        initDate();
     }
 
     private void initView()
