@@ -26,6 +26,10 @@ import cn.jarlen.photoedit.operate.ImageObject;
 import cn.jarlen.photoedit.operate.OperateUtils;
 import cn.jarlen.photoedit.operate.OperateView;
 
+/**
+ * 添加水印
+ * @author jarlen
+ */
 public class AddWatermarkActivity extends Activity implements View.OnClickListener {
 
     private LinearLayout content_layout;
