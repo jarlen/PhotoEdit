@@ -71,8 +71,14 @@ public class DrawingBoardView extends View
 	{
 		super.onDraw(canvas);
 		canvas.drawColor(Color.WHITE);
-		canvas.drawBitmap(backgroundBitmap, 0, 0, null);
-		canvas.drawBitmap(paintBitmap, 0, 0, null);
+		if(backgroundBitmap != null && !backgroundBitmap.isRecycled()){
+			canvas.drawBitmap(backgroundBitmap, 0, 0, null);
+		}
+
+		if(paintBitmap != null && !paintBitmap.isRecycled()){
+			canvas.drawBitmap(paintBitmap, 0, 0, null);
+		}
+
 	}
 
 	@Override
