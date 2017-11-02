@@ -311,12 +311,14 @@ public class ImageObject
 		if (OperateConstants.LEFTTOP == type)
 		{
 			point = getPointLeftTop();
+			delX = x - (point.x - deleteBm.getWidth() / 2);
+            		delY = y - (point.y - deleteBm.getHeight() / 2);
 		} else if (OperateConstants.RIGHTBOTTOM == type)
 		{
 			point = getPointRightBottom();
+			delX = x - (point.x + rotateBm.getWidth() / 2);
+			delY = y - (point.y + rotateBm.getHeight() / 2);
 		}
-		delX = x - (point.x + rotateBm.getWidth() / 2);
-		delY = y - (point.y + rotateBm.getHeight() / 2);
 		float diff = (float) Math.sqrt((delX * delX + delY * delY));
 		// float del = rotateBm.getWidth() / 2;
 		if (Math.abs(diff) <= resizeBoxSize)
