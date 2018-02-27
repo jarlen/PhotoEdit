@@ -1,3 +1,19 @@
+/*
+ *          Copyright (C) 2016 jarlen
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 package cn.jarlen.photoedit.demo;
 
 import android.app.Activity;
@@ -22,6 +38,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,6 +50,10 @@ import cn.jarlen.photoedit.demo.utils.Constants;
 import cn.jarlen.photoedit.operate.OperateUtils;
 import cn.jarlen.photoedit.utils.FileUtils;
 
+/**
+ * 测试首页
+ * @author jarlen
+ */
 public class MainActivity extends Activity implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
 
     private LinearLayout content_layout;

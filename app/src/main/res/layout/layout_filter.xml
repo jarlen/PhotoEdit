@@ -1,13 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_filter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cn.jarlen.photoedit.demo.ImageFilterActivity">
+    android:background="@color/common_bg" >
+
+    <include
+        android:id="@+id/common_top_bar"
+        layout="@layout/layout_common_top_bar" />
+
+    <RelativeLayout
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/common_top_bar"
+        android:layout_above="@+id/filtersSV"
+        >
+
+        <ImageView
+            android:id="@+id/pictureShow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/river" />
+
+        <RelativeLayout
+            android:id="@+id/regulator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" >
+
+            <cn.jarlen.photoedit.demo.view.VerticalSeekBar
+                android:id="@+id/verticalSeekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:max="100"
+                android:maxWidth="50dp"
+                android:minWidth="50dp"
+                android:progress="2" >
+            </cn.jarlen.photoedit.demo.view.VerticalSeekBar>
+
+            <TextView
+                android:id="@+id/verticalSeekBarProgressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/verticalSeekBar"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="10%"
+                android:textColor="#177d55" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/filtersSV"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:scrollbars="none"
+        android:layout_alignParentBottom="true" >
+
+        <LinearLayout
+            android:id="@+id/filtersList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/filterWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="美白"
+                android:visibility="gone"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="灰色"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterMosatic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="马赛克"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterLOMO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="LOMO"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterNostalgic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="怀旧"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterComics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="漫画"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterBlackWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="黑白"
+                android:visibility="gone"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterNegative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="底片"
+                android:visibility="gone"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterBrown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="褐色"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterSketchPencil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="铅笔画"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterOverExposure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="过度曝光"
+                android:visibility="gone"
+                android:textColor="#117d55" />
+
+            <!--  -->
+
+            <TextView
+                android:id="@+id/filterSoftness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="柔化"
+                android:visibility="gone"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterNiHong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="霓虹"
+                android:visibility="gone"
+                android:textColor="#117d55" />
+
+            <TextView
+                android:id="@+id/filterSketch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="素描"
+                android:visibility="gone"
+                android:textColor="#117d55" />
+
+            <!-- <TextView
+                android:id="@+id/filterCarving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:drawableTop="@drawable/icon_auto"
+                android:text="雕刻"
+                android:textColor="#117d55" /> -->
+
+            <!--  <TextView
+                 android:id="@+id/filterSelief"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="5dp"
+                 android:drawableTop="@drawable/icon_auto"
+                 android:text="浮雕"
+                 android:textColor="#117d55" /> -->
+            <!--
+             <TextView
+                 android:id="@+id/filterRuiHua"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginRight="5dp"
+                 android:drawableTop="@drawable/icon_auto"
+                 android:text="锐化"
+                 android:textColor="#117d55" /> -->
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </RelativeLayout>
