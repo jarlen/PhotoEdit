@@ -7,6 +7,9 @@ Note:
 WiKi : https://github.com/jarlen/PhotoEdit/wiki
 
 
+升级版APK  :  https://raw.githubusercontent.com/jarlen/PhotoEdit/master/photoedit.apk
+
+
 部分snapshot:
 
 ![enter image description here](https://github.com/jarlen/PhotoEdit/blob/master/app/snapshot/device-2016-10-10-092416.png)
