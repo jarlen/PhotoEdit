@@ -16,21 +16,20 @@
  */
 package cn.jarlen.photoedit.demo;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -38,23 +37,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.tencent.bugly.crashreport.CrashReport;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import cn.jarlen.photoedit.demo.utils.Constants;
 import cn.jarlen.photoedit.operate.OperateUtils;
 import cn.jarlen.photoedit.utils.FileUtils;
+import pub.devrel.easypermissions.EasyPermissions;
+import pub.devrel.easypermissions.PermissionRequest;
 
 /**
  * 测试首页
+ *
  * @author jarlen
  */
-public class MainActivity extends Activity implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
+public class MainActivity extends Activity implements View.OnClickListener, Toolbar.OnMenuItemClickListener, EasyPermissions.PermissionCallbacks {
 
     private LinearLayout content_layout;
     private Button addPictureFromPhotoBtn;
@@ -111,6 +115,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
 
     OperateUtils operateUtils;
 
+    private final String[] permissions = {
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +145,15 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
         addPictureFromCameraBtn = (Button) findViewById(R.id.addPictureFromCamera);
         addPictureFromCameraBtn.setOnClickListener(this);
         operateUtils = new OperateUtils(this);
+        if (!EasyPermissions.hasPermissions(this, permissions)) {
+            EasyPermissions.requestPermissions(new PermissionRequest.Builder(this, 1, permissions).build());
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
     @Override
@@ -374,5 +393,16 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
         Toast.makeText(MainActivity.this, "请点击测试按钮", Toast.LENGTH_SHORT).show();
 
         return false;
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        Toast.makeText(MainActivity.this, "请赋予必要的权限", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

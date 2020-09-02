@@ -399,7 +399,7 @@ public class PhotoFrame
 		topBm.recycle();
 		topBm = null;
 
-		canvas.save(Canvas.ALL_SAVE_FLAG);
+		canvas.save();
 		canvas.restore();
 
 		return newBitmap;
@@ -492,7 +492,7 @@ public class PhotoFrame
 		topBm.recycle();
 		topBm = null;
 
-		canvas.save(Canvas.ALL_SAVE_FLAG);
+		canvas.save();
 		canvas.restore();
 
 		return newBitmap;

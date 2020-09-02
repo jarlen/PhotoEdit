@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/common_bg">
-    <android.support.v7.widget.Toolbar
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,24 +30,24 @@
             android:layout_marginRight="10.0dip"
             android:src="@drawable/btn_view_ok" />
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true">
 
         <cn.jarlen.photoedit.mosaic.DrawMosaicView
             android:id="@+id/mosaic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/common_bg"
-            android:contentDescription="@string/app_name"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentTop="true"
+            android:background="@color/common_bg"
+            android:contentDescription="@string/app_name" />
     </RelativeLayout>
 
 </RelativeLayout>

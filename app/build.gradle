@@ -24,6 +24,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation project(':photoedit')
-    implementation 'com.yalantis:sidemenu:1.0'
     implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'pub.devrel:easypermissions:3.0.0'
 }

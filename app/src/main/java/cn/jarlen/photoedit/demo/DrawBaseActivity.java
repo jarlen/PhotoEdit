@@ -23,11 +23,12 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.Timer;
 import java.util.TimerTask;

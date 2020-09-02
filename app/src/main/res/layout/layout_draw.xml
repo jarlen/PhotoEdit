@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/common_bg" >
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:layout_marginRight="10.0dip"
             android:src="@drawable/btn_view_ok" />
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/drawLayout"
