@@ -9,6 +9,8 @@ WiKi : https://github.com/jarlen/PhotoEdit/wiki
 
 升级版APK  :  https://raw.githubusercontent.com/jarlen/PhotoEdit/master/photoedit.apk
 
+滤印相机源码：https://github.com/jarlen/CameraAndPhotoEdit
+
 
 部分snapshot:
 
